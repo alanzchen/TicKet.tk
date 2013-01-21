@@ -1,11 +1,146 @@
-<head>
-	<title>{{ title }}</title>
-<head> 
-<body>
-<h1>{{ h1 }}</h1>
-<!--#{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="{{ description }}">
+    <meta name="author" content="{{ author }}">
+    <meta name="keywords" content="{{ keywords }}">
+    <link href="css/modern.css" rel="stylesheet">
+    <link href="css/modern-responsive.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet" type="text/css">
+    <link href="js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+    <title>{{ Title }}</title>
+</head>
+<body class="modern-ui" onload="prettyPrint()">
+<div class="page">
+<div class="nav-bar">
+    <div class="nav-bar-inner padding10">
+        <span class="pull-menu"></span>
+        <a href="/"><span class="element brand">
+            <img class="place-left" src="images/logo32.png" style="height: 20px">{{ name }}<small>{{ version }}</small>
+        </span></a>
 
-<form action="/start/target/time/" method="post">
+        <div class="divider"></div>
 
-<input type="submit" value="Search" />
-</form>
+        <ul class="menu" style="overflow: visible;">
+            <li><a href="/">{{ home }}</a></li>
+            <li data-role="dropdown" class="">
+                <a href="#">{{ dropdown }}</a>
+                <ul class="dropdown-menu" style="overflow: hidden; display: none;">
+                    <li><a href="{{ dp1url }}">{{ dp1text }}</a></li>
+                    <li><a href="{{ dp2url }}">{{ dp2text }}</a></li>
+                    
+                    <li class="divider"></li>
+                    <li><a href="{{ dp3text }}">{{ dp3text }}</a>
+                    </li>
+                </ul>
+            </li>
+            
+            
+
+            <li><a href="{{ sourceurl }}">{{ Source }}</a></li>
+        </ul>
+
+    </div>
+</div>
+</div>
+
+<div class="page" id="page-index">
+    <div class="page-region">
+        <div class="page-region-content">
+            <div class="grid">
+                <div class="row">
+                    <div class="span8">
+                        <div class="hero-unit">
+                            <div id="carousel1" class="carousel" data-role="carousel" data-param-auto="false" data-param-period="999999999">
+                                <div class="slides">
+
+                                    <div class="slide" id="slide1" style="left: 0px;">
+                                        <h2>{{ step1header }}</h2>
+                                        <p class="bg-color-blueDark padding20 fg-color-white">{{ step1description }}</p>
+                                        <h3>{{ step1start }}</h3>
+                                        <div class="input-control text">
+                                    <input type="text" placeholder="{{ step1input }}">
+                                    <button class="helper"></button>
+                                </div>
+                                    </div>
+
+                                    <div class="slide" id="slide2" style="display: block; left: -580px;">
+                                        <h2>{{ step2header }}</h2>
+                                        <p class="bg-color-blueDark padding20 fg-color-white">{{ step1description }}</p>
+                                        <h3>{{ step2start }}</h3>
+                                        <div class="input-control text">
+                                    <input type="text" placeholder="{{ step2input }}">
+                                    <button class="helper"></button>
+                                </div>
+                                    </div>
+
+                                    <div class="slide" id="slide3" style="display: block; left: -580px;">
+                                        <h2>{{ step3header }}</h2>
+                                        <p class="bg-color-red fg-color-white padding20">
+                                            {{ step3start}}
+                                        </p>
+                                        <p></p><div class="input-control text">
+        <input type="date">
+        <button class="helper"></button>
+    </div>
+                                    </div>
+                                </div>
+
+                                <span class="control left"><i class="icon-arrow-left-3"></i></span>
+                                <span class="control right"><i class="icon-arrow-right-3"></i></span>
+
+                            <div class="markers"><ul><li class="active"><a href="javascript:void(0)" data-num="0"></a></li><li class=""><a href="javascript:void(0)" data-num="1"></a></li><li class=""><a href="javascript:void(0)" data-num="2"></a></li></ul></div><div class="markers"><ul><li class=""><a href="javascript:void(0)" data-num="0"></a></li><li class="active"><a href="javascript:void(0)" data-num="1"></a></li><li><a href="javascript:void(0)" data-num="2"></a></li></ul></div><div class="markers"><ul><li class="active"><a href="javascript:void(0)" data-num="0"></a></li><li class=""><a href="javascript:void(0)" data-num="1"></a></li><li class=""><a href="javascript:void(0)" data-num="2"></a></li></ul></div></div>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="span4 padding30 text-center place-left bg-color-blueLight" id="sponsorBlock">
+                            <br>
+                            <br>
+                            <h2 class="">{{ ready }}</h2>
+                            <p class="">{{ readytext }}</p>
+                            <br>
+                            <div id="botton"><a href="#"><h1><i class="icon-arrow-right-3 fg-color-red"></i></h1></a></div>
+                            <div id="loading"><iframe src="loading-frame.html" seamless width="100%" height=60px></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+    <div class="page">
+        <div class="nav-bar">
+            <div class="nav-bar-inner padding10">
+                <span class="element">
+                    {{ copyright }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/assets/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/assets/jquery.mousewheel.min.js"></script>
+
+    <script type="text/javascript" src="js/modern/dropdown.js"></script>
+    <script type="text/javascript" src="js/modern/accordion.js"></script>
+    <script type="text/javascript" src="js/modern/buttonset.js"></script>
+    <script type="text/javascript" src="js/modern/carousel.js"></script>
+    <script type="text/javascript" src="js/modern/input-control.js"></script>
+    <script type="text/javascript" src="js/modern/pagecontrol.js"></script>
+    <script type="text/javascript" src="js/modern/rating.js"></script>
+    <script type="text/javascript" src="js/modern/slider.js"></script>
+    <script type="text/javascript" src="js/modern/tile-slider.js"></script>
+    <script type="text/javascript" src="js/modern/tile-drag.js"></script>
+
+    <script type="text/javascript" src="js/assets/github.info.js"></script>
+    <script type="text/javascript" src="js/assets/google-analytics.js"></script>
+    <script type="text/javascript" src="js/google-code-prettify/prettify.js"></script>
+    <script src="js/sharrre/jquery.sharrre-1.3.4.min.js"></script>
+
+    
+</body></html>
