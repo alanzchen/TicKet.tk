@@ -11,8 +11,8 @@ urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'ticket.views.home', name='home'),
     url(r'^$',hello),
-    url(r'^origin/(\d{1,2})/target/(\d{1,2})/date/(\d{1,2})/$', result),
-    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
+    url(r'^source/(.{3})/target/(.{3})/$', result),
+    # url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
     # url(r'^ticket/', include('ticket.foo.urls')), 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

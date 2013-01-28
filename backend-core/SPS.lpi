@@ -19,7 +19,7 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="32"/>
-      <BuildNr Value="174"/>
+      <BuildNr Value="175"/>
       <StringTable FileDescription="Ticket Search Project - Searching Kernel" LegalCopyright="EnigmaHuang@Gmail.com all rights reserved." ProductVersion="1.1.32.146"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -54,7 +54,6 @@
       <Unit1>
         <Filename Value="SearchKernel.pas"/>
         <UnitName Value="SearchKernel"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
@@ -92,10 +91,11 @@
       <Unit5>
         <Filename Value="DatabaseIO.pas"/>
         <UnitName Value="DatabaseIO"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="46"/>
-        <CursorPos X="27" Y="60"/>
+        <TopLine Value="171"/>
+        <CursorPos X="26" Y="182"/>
         <UsageCount Value="19"/>
         <Loaded Value="True"/>
       </Unit5>
@@ -181,7 +181,7 @@
         <UsageCount Value="10"/>
       </Unit16>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="DatabaseIO.pas"/>
         <Caret Line="114" Column="1" TopLine="100"/>
@@ -294,6 +294,10 @@
         <Filename Value="Citys.pas"/>
         <Caret Line="21" Column="8" TopLine="7"/>
       </Position28>
+      <Position29>
+        <Filename Value="DatabaseIO.pas"/>
+        <Caret Line="60" Column="27" TopLine="46"/>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

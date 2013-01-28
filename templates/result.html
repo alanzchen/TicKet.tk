@@ -1,8 +1,143 @@
-<head>
-	<title>{{ title }}</title>
-</head> 
-<body>
-<h1>{{ h1 }}</h1>
-<!--#{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}-->
-There is a little fox in {{ origin }} wants to go to {{ target }} in {{ date }}.
-</body>
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>{{ Result }}<small>{{ Resultm }}</small></h1>
+                <a href="#" class="back-button big page-back" style="
+    background-image: url(icons/back.png);
+" onclick="backreset();"></a>
+            </div>
+        </div>
+        <div class="page-region">
+            <div class="page-region-content">
+                <div class="span10">
+                    <h2>从 {{ source }} 到 {{ target }}</h2>
+                    <h2>航班 于{{ date }}</h2>
+                     {% if Plane %}
+                     <ul class="listview image fluid">
+			  {% for plane in Plane.object_list %}
+			  {% if plane.plane1 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane1 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane2 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane2 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane3 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane3 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane4 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane4 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane5 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane5 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane6 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane6 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane7 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane7 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane8 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane8 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% if plane.plane9 %}
+                        <li class="bg-color-green fg-color-white">
+                            <div class="icon">
+                                <img src="images/Calendar128.png">
+                            </div>
+                            <div class="data">
+                                <h4 class="fg-color-white">{{ infoh4 }}</h4>
+                                <p>
+                                    {{ plane.plane9 }}
+                                </p>
+                            </div>
+                        </li>
+			  {% endif %}
+			  {% endfor %}
+                    </ul>
+                    {% else %}
+				  <div class="error-bar fg-color-white">
+                                    <p>{{ noplanefound }}</p>
+                                </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
