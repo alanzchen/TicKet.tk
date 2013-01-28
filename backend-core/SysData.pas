@@ -1,4 +1,4 @@
-unit SysData;
+﻿unit SysData;
 
 {$mode objfpc}{$H+}
 
@@ -8,17 +8,8 @@ uses
   Classes, SysUtils, Citys, DB, sqlite3ds, SysDAT;
 
 {$Define Release}
-{$Define IS_WINDOWS}
 
 const
-  {$IFDEF IS_WINDOWS}
-  fg = '\' ;
-  {$ENDIF}
-
-  {$IFDEF IS_LINUX}
-  fg = '/' ;
-  {$ENDIF}
-
   MaxDay = 3;
   MaxJump = 10;
   FillCharMax = 16843009;

@@ -52,12 +52,13 @@ begin
       if f[NowRouter,UsedTime+1]<f[NowRouter,UsedTime] then
       begin
         f[NowRouter,UsedTime]:=f[NowRouter,UsedTime+1];      //当前时间段不行动，取下一个时间段的最优解
-        Path[NowRouter,UsedTime]:=Path[NowRouter,UsedTime+1];
+        Path[NowRouter,UsedTime]:=NowRouter;
       end;
       for NewRouter:=1 to RouterNumber do                  //遍历路由表，寻找新中继路由
       begin
+        if NewRouter=NowRouter then continue;              //是自己，跳过
         ArriveTime:=Time[NowRouter,NewRouter,UsedTime];    //跳转到中继路由的时间
-        ArriveCost:=Cost[NowRouter,NewRouter,UsedTime];     //跳转到中继路由的代价
+        ArriveCost:=Cost[NowRouter,NewRouter,UsedTime];    //跳转到中继路由的代价
 
         if (ArriveCost=FillcharMax)
         or (ArriveTime=FillcharMax) then continue;         //无效跳转，放弃
@@ -87,16 +88,25 @@ begin
     NewRouter:=Path[NowRouter,NowTime];    //设置首个中继路由
     while NowRouter<>TgrID do              //只要当前路由不是最终目的路由
     begin
-      if NewRouter<>FillcharMax then
+      if NewRouter<>FillcharMax then       //指向自己，跳过
       begin
-        with Solve[StartRouter] do           //追加跳转路径
+        if NowRouter<>NewRouter then
+        with Solve[StartRouter] do         //追加跳转路径
         begin
           inc(JumpNum);
           PName[JumpNum]:=PathName[NowRouter,NewRouter,NowTime];
         end;
 
-        NowTime:=Time[NowRouter,NewRouter,NowTime];  //取跳转时间
-        NowRouter:=NewRouter;                        //跳转到中转路由
+        if NowRouter<>NewRouter then      //指向新的路由
+        begin
+          NowTime:=Time[NowRouter,NewRouter,NowTime];  //取跳转时间
+          NowRouter:=NewRouter;                        //跳转到中转路由
+        end
+        else
+        begin                             //指向自己
+          NowRouter:=NewRouter;
+          NowTime:=NowTime+1;
+        end;
 
         if NowTime<>FillcharMax
         then NewRouter:=Path[NowRouter,NowTime]      //存在，取下一个中转路由

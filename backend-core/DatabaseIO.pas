@@ -28,12 +28,13 @@ begin
   with SQLite3 do
   begin
     FileName := OutputDB;                  //设定文件名
-    TableName := city;                     //设定表名
+    TableName := 'Data';                   //全部写到一张表里
     if not TableExists then                //如果表不存在，创建表头
     begin
       FieldDefs.Clear;
       FieldDefs.Add('Id', ftAutoInc);      //貌似不写这句是不行的
       FieldDefs.Add('Source',ftString);
+      FieldDefs.Add('Target',ftString);
       FieldDefs.Add('Cost',ftInteger);
       FieldDefs.Add('PlaneNum',ftInteger);
       FieldDefs.Add('Plane1',ftString);
@@ -56,6 +57,7 @@ begin
     SQLite3.Append;                  //追加一行数据
     for j:=1 to MaxJump do s[j]:=Solve[i].PName[j];
     SQLite3.FieldByName('Source').AsString   := GetTWCodeByID(i);
+    SQLite3.FieldByName('Target').AsString   := City;
     SQLite3.FieldByName('Cost').AsInteger     := Solve[i].TotalCost ;
     SQLite3.FieldByName('PlaneNum').AsInteger := Solve[i].JumpNum;
     for j:=1 to MaxJump do s[j]:=Solve[i].PName[j];
