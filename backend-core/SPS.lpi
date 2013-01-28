@@ -1,31 +1,30 @@
 <?xml version="1.0"?>
 <CONFIG>
   <ProjectOptions>
+    <Version Value="9"/>
     <PathDelim Value="\"/>
-    <Version Value="7"/>
     <General>
       <Flags>
         <MainUnitHasCreateFormStatements Value="False"/>
         <MainUnitHasTitleStatement Value="False"/>
       </Flags>
       <MainUnit Value="0"/>
-      <TargetFileExt Value=".exe"/>
       <Title Value="SPS"/>
-      <Icon Value="0"/>
       <UseXPManifest Value="True"/>
-      <ActiveEditorIndexAtStart Value="4"/>
+      <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <CurrentVersionNr Value="1"/>
-      <CurrentMajorRevNr Value="1"/>
-      <CurrentMinorRevNr Value="32"/>
-      <CurrentBuildNr Value="174"/>
-      <ProjectVersion Value="1.1.32.146"/>
-      <FileDescription Value="Ticket Search Project - Searching Kernel"/>
-      <LegalCopyright Value="EnigmaHuang@Gmail.com all rights reserved."/>
+      <MajorVersionNr Value="1"/>
+      <MinorVersionNr Value="1"/>
+      <RevisionNr Value="32"/>
+      <BuildNr Value="174"/>
+      <StringTable FileDescription="Ticket Search Project - Searching Kernel" LegalCopyright="EnigmaHuang@Gmail.com all rights reserved." ProductVersion="1.1.32.146"/>
     </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="default" Default="True"/>
+    </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
       <IgnoreBinaries Value="False"/>
@@ -36,7 +35,7 @@
       <local>
         <FormatVersion Value="1"/>
         <CommandLineParams Value="1day output.txt 2013.db3"/>
-        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
       </local>
     </RunParams>
     <Units Count="17">
@@ -44,55 +43,61 @@
         <Filename Value="SPS.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SPS"/>
-        <CursorPos X="45" Y="65"/>
-        <TopLine Value="46"/>
         <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="46"/>
+        <CursorPos X="45" Y="65"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="SearchKernel.pas"/>
         <UnitName Value="SearchKernel"/>
-        <CursorPos X="48" Y="107"/>
-        <TopLine Value="1"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="48" Y="107"/>
         <UsageCount Value="16"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="SysData.pas"/>
         <UnitName Value="SysData"/>
-        <CursorPos X="52" Y="109"/>
-        <TopLine Value="52"/>
         <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="52"/>
+        <CursorPos X="52" Y="109"/>
         <UsageCount Value="18"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="Citys.pas"/>
         <UnitName Value="Citys"/>
-        <CursorPos X="44" Y="8"/>
-        <TopLine Value="1"/>
         <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="44" Y="8"/>
         <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="LoadDatabase.pas"/>
         <UnitName Value="LoadDatabase"/>
-        <CursorPos X="42" Y="61"/>
         <TopLine Value="58"/>
+        <CursorPos X="42" Y="61"/>
         <UsageCount Value="10"/>
       </Unit4>
       <Unit5>
         <Filename Value="DatabaseIO.pas"/>
         <UnitName Value="DatabaseIO"/>
-        <CursorPos X="27" Y="60"/>
-        <TopLine Value="46"/>
         <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="46"/>
+        <CursorPos X="27" Y="60"/>
         <UsageCount Value="19"/>
         <Loaded Value="True"/>
-        <FoldState Value=" T4jA0e1w"/>
       </Unit5>
       <Unit6>
         <Filename Value="..\DBTest\Unit1.pas"/>
@@ -100,82 +105,83 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <CursorPos X="25" Y="4"/>
         <TopLine Value="25"/>
+        <CursorPos X="25" Y="4"/>
         <UsageCount Value="10"/>
       </Unit6>
       <Unit7>
         <Filename Value="..\lazarus\fpc\2.2.4\source\packages\fcl-db\src\sqlite\customsqliteds.pas"/>
         <UnitName Value="customsqliteds"/>
-        <CursorPos X="31" Y="149"/>
         <TopLine Value="159"/>
+        <CursorPos X="31" Y="149"/>
         <UsageCount Value="10"/>
       </Unit7>
       <Unit8>
         <Filename Value="..\lazarus\fpc\2.2.4\source\packages\fcl-db\src\sqlite\sqlite3ds.pas"/>
         <UnitName Value="sqlite3ds"/>
-        <CursorPos X="36" Y="46"/>
         <TopLine Value="34"/>
+        <CursorPos X="36" Y="46"/>
         <UsageCount Value="10"/>
       </Unit8>
       <Unit9>
         <Filename Value="..\lazarus\fpc\2.2.4\source\rtl\objpas\objpas.pp"/>
         <UnitName Value="objpas"/>
-        <CursorPos X="15" Y="71"/>
         <TopLine Value="77"/>
+        <CursorPos X="15" Y="71"/>
         <UsageCount Value="10"/>
       </Unit9>
       <Unit10>
         <Filename Value="SysDAT.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SysDAT"/>
-        <CursorPos X="50" Y="29"/>
-        <TopLine Value="3"/>
         <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="3"/>
+        <CursorPos X="50" Y="29"/>
         <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="..\lazarus\fpc\2.2.4\source\rtl\objpas\sysutils\filutilh.inc"/>
-        <CursorPos X="10" Y="84"/>
         <TopLine Value="78"/>
+        <CursorPos X="10" Y="84"/>
         <UsageCount Value="10"/>
       </Unit11>
       <Unit12>
         <Filename Value="..\lazarus\fpc\2.2.4\source\packages\fcl-base\src\custapp.pp"/>
         <UnitName Value="CustApp"/>
-        <CursorPos X="15" Y="53"/>
         <TopLine Value="80"/>
+        <CursorPos X="15" Y="53"/>
         <UsageCount Value="10"/>
       </Unit12>
       <Unit13>
         <Filename Value="..\lazarus\fpc\2.2.4\source\rtl\objpas\dateutils.pp"/>
         <UnitName Value="dateutils"/>
-        <CursorPos X="10" Y="1"/>
         <TopLine Value="1"/>
+        <CursorPos X="10" Y="1"/>
         <UsageCount Value="10"/>
       </Unit13>
       <Unit14>
         <Filename Value="..\lazarus\fpc\2.2.4\source\rtl\objpas\dateutil.inc"/>
-        <CursorPos X="10" Y="275"/>
         <TopLine Value="263"/>
+        <CursorPos X="10" Y="275"/>
         <UsageCount Value="10"/>
       </Unit14>
       <Unit15>
         <Filename Value="..\lazarus\fpc\2.2.4\source\packages\fcl-db\src\base\db.pas"/>
         <UnitName Value="db"/>
-        <CursorPos X="26" Y="110"/>
         <TopLine Value="98"/>
+        <CursorPos X="26" Y="110"/>
         <UsageCount Value="10"/>
       </Unit15>
       <Unit16>
         <Filename Value="..\lazarus\fpc\2.2.4\source\rtl\inc\systemh.inc"/>
-        <CursorPos X="3" Y="238"/>
         <TopLine Value="224"/>
+        <CursorPos X="3" Y="238"/>
         <UsageCount Value="10"/>
       </Unit16>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="DatabaseIO.pas"/>
         <Caret Line="114" Column="1" TopLine="100"/>
@@ -226,84 +232,81 @@
       </Position12>
       <Position13>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="54" Column="42" TopLine="67"/>
+        <Caret Line="82" Column="1" TopLine="78"/>
       </Position13>
       <Position14>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="55" Column="32" TopLine="73"/>
+        <Caret Line="84" Column="1" TopLine="71"/>
       </Position14>
       <Position15>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="82" Column="1" TopLine="78"/>
+        <Caret Line="85" Column="1" TopLine="72"/>
       </Position15>
       <Position16>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="84" Column="1" TopLine="71"/>
+        <Caret Line="86" Column="1" TopLine="73"/>
       </Position16>
       <Position17>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="85" Column="1" TopLine="72"/>
+        <Caret Line="87" Column="1" TopLine="74"/>
       </Position17>
       <Position18>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="86" Column="1" TopLine="73"/>
+        <Caret Line="88" Column="1" TopLine="75"/>
       </Position18>
       <Position19>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="87" Column="1" TopLine="74"/>
+        <Caret Line="93" Column="41" TopLine="76"/>
       </Position19>
       <Position20>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="88" Column="1" TopLine="75"/>
+        <Caret Line="91" Column="1" TopLine="78"/>
       </Position20>
       <Position21>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="93" Column="41" TopLine="76"/>
+        <Caret Line="93" Column="1" TopLine="80"/>
       </Position21>
       <Position22>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="91" Column="1" TopLine="78"/>
+        <Caret Line="95" Column="1" TopLine="82"/>
       </Position22>
       <Position23>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="93" Column="1" TopLine="80"/>
+        <Caret Line="96" Column="1" TopLine="83"/>
       </Position23>
       <Position24>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="95" Column="1" TopLine="82"/>
+        <Caret Line="99" Column="1" TopLine="86"/>
       </Position24>
       <Position25>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="96" Column="1" TopLine="83"/>
+        <Caret Line="108" Column="30" TopLine="92"/>
       </Position25>
       <Position26>
         <Filename Value="SearchKernel.pas"/>
-        <Caret Line="99" Column="1" TopLine="86"/>
+        <Caret Line="93" Column="32" TopLine="86"/>
       </Position26>
       <Position27>
-        <Filename Value="SearchKernel.pas"/>
-        <Caret Line="108" Column="30" TopLine="92"/>
-      </Position27>
-      <Position28>
-        <Filename Value="SearchKernel.pas"/>
-        <Caret Line="93" Column="32" TopLine="86"/>
-      </Position28>
-      <Position29>
         <Filename Value="Citys.pas"/>
         <Caret Line="18" Column="27" TopLine="7"/>
-      </Position29>
-      <Position30>
+      </Position27>
+      <Position28>
         <Filename Value="Citys.pas"/>
         <Caret Line="21" Column="8" TopLine="7"/>
-      </Position30>
+      </Position28>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
-    <Version Value="8"/>
+    <Version Value="11"/>
     <PathDelim Value="\"/>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir)\"/>
+      <IncludeFiles Value="$(ProjOutDir)"/>
     </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <UseAnsiStrings Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
     <Other>
       <CompilerPath Value="$(CompPath)"/>
     </Other>
@@ -311,6 +314,9 @@
   <Debugging>
     <BreakPoints Count="1">
       <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsGlobal"/>
+        <WatchKind Value="wpkWrite"/>
         <Source Value="SearchKernel.pas"/>
         <Line Value="84"/>
       </Item1>
@@ -338,4 +344,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>
