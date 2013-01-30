@@ -1,6 +1,7 @@
         <div class="page-header">
             <div class="page-header-content">
-                <h1>{{ Result }}<small>{{ Resultm }}</small></h1>
+		{% for plane in Planes %}
+                <h1>航班<small>共{{ plane.PlaneNum }}次跳转</small></h1>
                 <a href="#" class="back-button big page-back" style="
     background-image: url(/static/icons/back.png);
 " onclick="backreset();"></a>
@@ -9,132 +10,134 @@
         <div class="page-region">
             <div class="page-region-content">
                 <div class="span10">
+                {% if plane.Cost != 16843009 %}
                     <h2>从 {{ source }} 到 {{ target }}</h2>
-                    <h2>航班列表</h2>
-                     {% if Plane %}
+                    <h2>总共花费{{ plane.Cost }}软妹币</h2>
                      <ul class="listview image fluid">
-			  {% for plane in Plane.object_list %}
-			  {% if plane.plane1 %}
+			  {% if plane.Plane1 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane1 }}
+                                    {{ plane.Plane1 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane2 %}
+			  {% if plane.Plane2 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane2 }}
+                                    {{ plane.Plane2 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane3 %}
+			  {% if plane.Plane3 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane3 }}
+                                    {{ plane.Plane3 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane4 %}
+			  {% if plane.Plane4 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane4 }}
+                                    {{ plane.Plane4 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane5 %}
+			  {% if plane.Plane5 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane5 }}
+                                    {{ plane.Plane5 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane6 %}
+			  {% if plane.Plane6 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane6 }}
+                                    {{ plane.Plane6 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane7 %}
+			  {% if plane.Plane7 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane7 }}
+                                    {{ plane.Plane7 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane8 %}
+			  {% if plane.Plane8 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane8 }}
+                                    {{ plane.Plane8 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
-			  {% if plane.plane9 %}
+			  {% if plane.Plane9 %}
                         <li class="bg-color-green fg-color-white">
                             <div class="icon">
-                                <img src="images/Calendar128.png">
+                                <img src="static/images/plane.png">
                             </div>
                             <div class="data">
                                 <h4 class="fg-color-white">{{ infoh4 }}</h4>
                                 <p>
-                                    {{ plane.plane9 }}
+                                    {{ plane.Plane9 }}
                                 </p>
                             </div>
                         </li>
 			  {% endif %}
+			  {% else %}
+			 <div class="error-bar fg-color-white">
+                                    <p>没有找到适合的航班。</p>
+                         </div>
+                         {% endif %}
 			  {% endfor %}
                     </ul>
-                    {% else %}
-                    {% endif %}
                 </div>
             </div>
         </div>

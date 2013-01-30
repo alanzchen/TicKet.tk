@@ -17,11 +17,9 @@
     <div class="nav-bar-inner padding10">
         <span class="pull-menu"></span>
         <a href="/"><span class="element brand">
-            <img class="place-left" src="images/logo32.png" style="height: 20px">{{ name }}<small>{{ version }}</small>
+            <img class="place-left" src="static/images/logo32.png" style="height: 20px">{{ name }}<small>{{ version }}</small>
         </span></a>
-
         <div class="divider"></div>
-
         <ul class="menu" style="overflow: visible;">
             <li><a href="/">{{ home }}</a></li>
             <li data-role="dropdown" class="">
@@ -66,7 +64,7 @@
 
                                     <div class="slide" id="slide2" style="display: block; left: -580px;">
                                         <h2>{{ step2header }}</h2>
-                                        <p class="bg-color-blueDark padding20 fg-color-white">{{ step1description }}</p>
+                                        <p class="bg-color-blueDark padding20 fg-color-white">{{ step2description }}</p>
                                         <h3>{{ step2start }}</h3>
                                         <div class="input-control text">
                                     <input type="text" id="Target" placeholder="{{ step2input }}">
@@ -79,10 +77,6 @@
                                         <p class="bg-color-red fg-color-white padding20">
                                             {{ step3start}}
                                         </p>
-                                        <p></p><div class="input-control text">
-        <input type="date">
-        <button class="helper"></button>
-    </div>
                                     </div>
                                 </div>
 
@@ -164,7 +158,7 @@ fade('page-index', 'FadeIn');
     
     </div>
 <div class="page secondary" id="page-result" style="display:none">
-This is the InnerHTML for result.
+这肯定有问题。
 </div>
 <div class="page">
         <div class="nav-bar">
