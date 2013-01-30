@@ -28,7 +28,7 @@ begin
   with SQLite3 do
   begin
     FileName := OutputDB;                  //设定文件名
-    TableName := 'Data';                   //全部写到一张表里
+    TableName := 'ticket_data';                   //全部写到一张表里
     if not TableExists then                //如果表不存在，创建表头
     begin
       FieldDefs.Clear;

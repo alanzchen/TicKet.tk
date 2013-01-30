@@ -59,7 +59,7 @@
                                         <p class="bg-color-blueDark padding20 fg-color-white">{{ step1description }}</p>
                                         <h3>{{ step1start }}</h3>
                                         <div class="input-control text">
-                                    <input type="text" placeholder="{{ step1input }}">
+                                    <input type="text" id="Source" placeholder="{{ step1input }}">
                                     <button class="helper"></button>
                                 </div>
                                     </div>
@@ -69,7 +69,7 @@
                                         <p class="bg-color-blueDark padding20 fg-color-white">{{ step1description }}</p>
                                         <h3>{{ step2start }}</h3>
                                         <div class="input-control text">
-                                    <input type="text" placeholder="{{ step2input }}">
+                                    <input type="text" id="Target" placeholder="{{ step2input }}">
                                     <button class="helper"></button>
                                 </div>
                                     </div>
@@ -115,12 +115,15 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    document.getElementById("page-result").innerHTML=xmlhttp.responseText;
     }
   }
-var renderurl = 
-xmlhttp.open("GET","Source/",true);
+var sourcetext = document.getElementById('Source').value;
+var targettext = document.getElementById('Target').value;
+var renderurl = 'source/' + sourcetext + '/target/' + targettext + '/';
+xmlhttp.open("GET",renderurl,true);
 xmlhttp.send();
+loaded();
 }
 function fade(div_id, action) {
 	if(action == 'FadeOut') {
@@ -130,7 +133,7 @@ function fade(div_id, action) {
 		$('#'+div_id).fadeIn('slow');
 	}
 };
-function load() {
+function loading() {
 document.getElementById('load').style.display='none';
 document.getElementById('loading').style.display='block';
 loadXMLDoc();
@@ -144,12 +147,12 @@ fade('page-result', 'FadeIn');
 function backreset() {
 document.getElementById('load').style.display='block';
 document.getElementById('loading').style.display='none';
+fade('page-result', 'FadeOut');
 document.getElementById('page-result').style.display='none';
 fade('page-index', 'FadeIn');
-fade('page-result', 'FadeOut');
 };
 </script>
-                            <div id="load"><a href="#" onclick="load()"><h1><i class="icon-arrow-right-3 fg-color-red"></i></h1></a></div>
+                            <div id="load"><a href="#" onclick="loading()"><h1><i class="icon-arrow-right-3 fg-color-red"></i></h1></a></div>
                             <div id="loading" style="display:none"><iframe src="static/loading-frame.html" seamless width="100%" height=60px></iframe></div>
                         </div>
                     </div>

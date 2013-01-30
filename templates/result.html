@@ -10,7 +10,7 @@
             <div class="page-region-content">
                 <div class="span10">
                     <h2>从 {{ source }} 到 {{ target }}</h2>
-                    <h2>航班 于{{ date }}</h2>
+                    <h2>航班列表</h2>
                      {% if Plane %}
                      <ul class="listview image fluid">
 			  {% for plane in Plane.object_list %}
@@ -134,9 +134,6 @@
 			  {% endfor %}
                     </ul>
                     {% else %}
-				  <div class="error-bar fg-color-white">
-                                    <p>{{ noplanefound }}</p>
-                                </div>
                     {% endif %}
                 </div>
             </div>
