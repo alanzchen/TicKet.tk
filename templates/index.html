@@ -44,7 +44,6 @@
     </div>
 </div>
 </div>
-
 <div class="page" id="page-index">
     <div class="page-region">
         <div class="page-region-content">
@@ -100,31 +99,81 @@
                             <h2 class="">{{ ready }}</h2>
                             <p class="">{{ readytext }}</p>
                             <br>
-                            <div id="botton"><a href="#"><h1><i class="icon-arrow-right-3 fg-color-red"></i></h1></a></div>
-                            <div id="loading"><iframe src="static/loading-frame.html" seamless width="100%" height=60px></iframe></div>
+<script>
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+var renderurl = 
+xmlhttp.open("GET","Source/",true);
+xmlhttp.send();
+}
+function fade(div_id, action) {
+	if(action == 'FadeOut') {
+		$('#'+div_id).fadeOut('slow');
+	}
+	else {
+		$('#'+div_id).fadeIn('slow');
+	}
+};
+function load() {
+document.getElementById('load').style.display='none';
+document.getElementById('loading').style.display='block';
+loadXMLDoc();
+};
+function loaded() {
+document.getElementById('load').style.display='block';
+document.getElementById('loading').style.display='none';
+fade('page-index', 'FadeOut');
+fade('page-result', 'FadeIn');
+};
+function backreset() {
+document.getElementById('load').style.display='block';
+document.getElementById('loading').style.display='none';
+document.getElementById('page-result').style.display='none';
+fade('page-index', 'FadeIn');
+fade('page-result', 'FadeOut');
+};
+</script>
+                            <div id="load"><a href="#" onclick="load()"><h1><i class="icon-arrow-right-3 fg-color-red"></i></h1></a></div>
+                            <div id="loading" style="display:none"><iframe src="static/loading-frame.html" seamless width="100%" height=60px></iframe></div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            
-
-            
         </div>
     </div>
 </div>
-
-    <div class="page">
+    
+    </div>
+<div class="page secondary" id="page-result" style="display:none">
+This is the InnerHTML for result.
+</div>
+<div class="page">
         <div class="nav-bar">
             <div class="nav-bar-inner padding10">
                 <span class="element">
                     {{ copyright }}
                 </span>
             </div>
-        </div>
-    </div>
+</div>
     <script type="text/javascript" src="static/js/assets/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="static/js/assets/jquery.mousewheel.min.js"></script>
+
     <script type="text/javascript" src="static/js/modern/dropdown.js"></script>
     <script type="text/javascript" src="static/js/modern/accordion.js"></script>
     <script type="text/javascript" src="static/js/modern/buttonset.js"></script>
@@ -135,10 +184,5 @@
     <script type="text/javascript" src="static/js/modern/slider.js"></script>
     <script type="text/javascript" src="static/js/modern/tile-slider.js"></script>
     <script type="text/javascript" src="static/js/modern/tile-drag.js"></script>
-    <script type="text/javascript" src="static/js/assets/github.info.js"></script>
-    <script type="text/javascript" src="static/js/assets/google-analytics.js"></script>
     <script type="text/javascript" src="static/js/google-code-prettify/prettify.js"></script>
-    <script src="static/js/sharrre/jquery.sharrre-1.3.4.min.js"></script>
-
-    
 </body></html>
