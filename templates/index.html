@@ -5,6 +5,7 @@
     <meta name="description" content="{{ description }}">
     <meta name="author" content="{{ author }}">
     <meta name="keywords" content="{{ keywords }}">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
     <link href="static/css/modern.css" rel="stylesheet">
     <link href="static/css/modern-responsive.css" rel="stylesheet">
     <link href="static/css/site.css" rel="stylesheet" type="text/css">
@@ -58,6 +59,7 @@
                                         <h3>{{ step1start }}</h3>
                                         <div class="input-control text">
                                     <input type="text" id="Source" placeholder="{{ step1input }}">
+                                    <input type="hidden" id="Source-id" >
                                     <button class="helper"></button>
                                 </div>
                                     </div>
@@ -68,6 +70,7 @@
                                         <h3>{{ step2start }}</h3>
                                         <div class="input-control text">
                                     <input type="text" id="Target" placeholder="{{ step2input }}">
+                                    <input type="hidden" id="Target-id" >
                                     <button class="helper"></button>
                                 </div>
                                     </div>
@@ -75,7 +78,7 @@
                                     <div class="slide" id="slide3" style="display: block; left: -580px;">
                                         <h2>{{ step3header }}</h2>
                                         <p class="bg-color-red fg-color-white padding20">
-                                            {{ step3start}}
+                                            {{ step3start }}
                                         </p>
                                     </div>
                                 </div>
@@ -112,8 +115,8 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("page-result").innerHTML=xmlhttp.responseText;
     }
   }
-var sourcetext = document.getElementById('Source').value;
-var targettext = document.getElementById('Target').value;
+var sourcetext = document.getElementById('Source-id').value;
+var targettext = document.getElementById('Target-id').value;
 var renderurl = 'source/' + sourcetext + '/target/' + targettext + '/';
 xmlhttp.open("GET",renderurl,true);
 xmlhttp.send();
@@ -181,5 +184,6 @@ fade('page-index', 'FadeIn');
     <script type="text/javascript" src="static/js/modern/slider.js"></script>
     <script type="text/javascript" src="static/js/modern/tile-slider.js"></script>
     <script type="text/javascript" src="static/js/modern/tile-drag.js"></script>
-    <script type="text/javascript" src="static/js/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="static/js/autocomplete.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 </body></html>
