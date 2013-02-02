@@ -19,7 +19,7 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="32"/>
-      <BuildNr Value="175"/>
+      <BuildNr Value="176"/>
       <StringTable FileDescription="Ticket Search Project - Searching Kernel" LegalCopyright="EnigmaHuang@Gmail.com all rights reserved." ProductVersion="1.1.32.146"/>
     </VersionInfo>
     <BuildModes Count="1">
