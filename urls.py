@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
 from ticket.index import hello
 from ticket.result import result
-from dajaxice.core import dajaxice_autodiscover, dajaxice_config
-dajaxice_autodiscover()
+#from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+#dajaxice_autodiscover()
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
