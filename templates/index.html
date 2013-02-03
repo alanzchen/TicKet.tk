@@ -124,6 +124,7 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     document.getElementById("page-result").innerHTML=xmlhttp.responseText;
+    loaded();
     }
   }
 var sourcetext = document.getElementById('Source-id').value;
@@ -131,7 +132,6 @@ var targettext = document.getElementById('Target-id').value;
 var renderurl = 'source/' + sourcetext + '/target/' + targettext + '/';
 xmlhttp.open("GET",renderurl,true);
 xmlhttp.send();
-loaded();
 }
 function fade(div_id, action) {
 	if(action == 'FadeOut') {
@@ -197,7 +197,7 @@ fade('page-index', 'FadeIn');
                 <span class="element">
                     {{ copyright }}
                 </span>
-                <a href="" class="icon-css3" style="color: white;float: right;padding-top: 5px;">CSS3</a><a href="" class="icon-html5" style="color: white;float: right;padding-top: 5px;">HTML5</a><a href="" class="icon-github" style="color: white;float: right;padding-top: 5px;">Fork Me</a>
+                <abbr title="HTML5" class="icon-html5" style="color: white;float: right;padding-top: 5px;">HTML5</abbr><a href="" class="icon-github" style="color: white;float: right;padding-top: 5px;">Fork me on Github</a>
             </div>
 </div>
 </div>
