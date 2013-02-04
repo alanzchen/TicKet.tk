@@ -11,7 +11,6 @@ Procedure DPSearch(const TgrCode:string);
 
 implementation
 
-Procedure DPSearch(const TgrCode:string);
 var
   UsedTime    : integer;
   NowRouter   : integer;
@@ -21,20 +20,28 @@ var
   i,TgrID,j   : integer;
   StartRouter : integer;
   NowTime     : integer;
-begin
-  TgrID:=GetIDByTWCode(TgrCode);     //取目标路由编号
 
+Procedure InitData;
+begin
   //一开始的时候，所有路由的前继路由为自身
   for i:=1 to RouterNumber do
     for j:=1 to MaxTimeSection do Path[i,j]:=i;
 
   for NowRouter:=1 to RouterNumber do   //直接能到达的，先记录
+  begin
+    DCost[NowRouter]:=MaxInt;
     for UsedTime:=1 to TotalTime do
       begin
         f[NowRouter,UsedTime]:=Cost[NowRouter,TgrID,UsedTime];
+        if f[NowRouter,UsedTime]<DCost[NowRouter] then                  //记录直飞最便宜航班
+        begin
+          DCost[NowRouter]:=f[NowRouter,UsedTime];
+          Direct[NowRouter]:=PathName[NowRouter,TgrID,UsedTime];
+        end;
         if f[NowRouter,UsedTime]<>FillcharMax then path[NowRouter,UsedTime]:=TgrID;
       end;
 
+  end;
   for i:=1 to RouterNumber do
   begin
     f[i,TotalTime]:=Cost[i,TgrID,TotalTime];   //初始化最终状态
@@ -43,6 +50,64 @@ begin
   end;
   { 实际上上面的处理有点偷懒，因为这意味着最后一个时间段有跳转路径都可以记录采用
     不过有什么关系呢，反正最后一个航班能到就可以了嘛 }
+end;
+
+Procedure WriteResult;
+begin
+  { 先清空结果池 }
+  for i:=1 to RouterNumber do
+  begin
+    solve[i].JumpNum:=0;
+    for j:=1 to MaxJump do solve[i].PName[j]:='';
+  end;
+ { 下面开始写结果 }
+  for StartRouter:=1 to RouterNumber do
+  begin
+    Solve[StartRouter].JumpNum:=0;         //初始化跳转数为0
+    Solve[StartRouter].TotalCost:=f[StartRouter,1];
+    NowTime:=1;                            //初始化初始时间段为1
+    NowRouter:=StartRouter;                //设置初始路由
+    NewRouter:=Path[NowRouter,NowTime];    //设置首个中继路由
+    if Solve[StartRouter].TotalCost=fillcharmax then continue;
+    while NowRouter<>TgrID do              //只要当前路由不是最终目的路由
+    begin
+      if NewRouter<>FillcharMax then
+      begin
+        if NowRouter<>NewRouter then       //若指向自己，则跳过
+        with Solve[StartRouter] do         //追加跳转路径
+        begin
+          inc(JumpNum);
+          PName[JumpNum]:=PathName[NowRouter,NewRouter,NowTime];
+        end;
+
+        if NowRouter<>NewRouter then      //指向新的路由
+        begin
+          NowTime:=Time[NowRouter,NewRouter,NowTime];  //取跳转时间
+          NowRouter:=NewRouter;                        //跳转到中转路由
+        end
+        else
+        begin                             //指向自己
+          NowRouter:=NewRouter;
+          NowTime:=NowTime+1;
+        end;
+
+        if NowTime<>FillcharMax
+        then NewRouter:=Path[NowRouter,NowTime]   //存在，取下一个中转路由
+        else begin
+          NowRouter:=TgrID;                       //不存在，结束
+          dec(Solve[StartRouter].JumpNum);
+        end;
+      end
+      else NowRouter:=TgrID;
+    end;
+  end;
+end;
+
+Procedure DPSearch(const TgrCode:string);
+begin
+  TgrID:=GetIDByTWCode(TgrCode);     //取目标路由编号
+
+  InitData;
 
   {下面这一段是搜索的核心内容}
   for UsedTime:=TotalTime downto 1 do
@@ -72,52 +137,7 @@ begin
     end;
   end;
 
-  { 先清空结果池 }
-  for i:=1 to RouterNumber do
-  begin
-    solve[i].JumpNum:=0;
-    for j:=1 to MaxJump do solve[i].PName[j]:='';
-  end;
- { 下面开始写结果 }
-  for StartRouter:=1 to RouterNumber do
-  begin
-    Solve[StartRouter].JumpNum:=0;         //初始化跳转数为0
-    Solve[StartRouter].TotalCost:=f[StartRouter,1];
-    NowTime:=1;                            //初始化初始时间段为1
-    NowRouter:=StartRouter;                //设置初始路由
-    NewRouter:=Path[NowRouter,NowTime];    //设置首个中继路由
-    while NowRouter<>TgrID do              //只要当前路由不是最终目的路由
-    begin
-      if NewRouter<>FillcharMax then       //指向自己，跳过
-      begin
-        if NowRouter<>NewRouter then
-        with Solve[StartRouter] do         //追加跳转路径
-        begin
-          inc(JumpNum);
-          PName[JumpNum]:=PathName[NowRouter,NewRouter,NowTime];
-        end;
-
-        if NowRouter<>NewRouter then      //指向新的路由
-        begin
-          NowTime:=Time[NowRouter,NewRouter,NowTime];  //取跳转时间
-          NowRouter:=NewRouter;                        //跳转到中转路由
-        end
-        else
-        begin                             //指向自己
-          NowRouter:=NewRouter;
-          NowTime:=NowTime+1;
-        end;
-
-        if NowTime<>FillcharMax
-        then NewRouter:=Path[NowRouter,NowTime]      //存在，取下一个中转路由
-        else begin
-          NowRouter:=TgrID;                       //不存在，结束
-          dec(Solve[StartRouter].JumpNum);
-        end;
-      end
-      else NowRouter:=TgrID;
-    end;
-  end;
+  WriteResult;
 end;
 
 end.

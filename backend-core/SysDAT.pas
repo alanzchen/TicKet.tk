@@ -15,19 +15,37 @@ uses
 
 Function AtDAT:string;
 Function GetTimeSlice(s:string):integer;
+Function GetMonthString:string;
 
 implementation
 
+var
+  t:TDateTime;
+  hh,mm,ss,ms,year,month,day:word;
+  tmp:integer;
+  stmp:string;
+
+Function GetMonthString:string;
+var
+  iyear,imonth:integer;
+begin
+  t:=Date();
+  DecodeDate(t,year,month,day);
+  iyear:=year;
+  imonth:=month;
+  result:=IntToStr(iyear)+'-'+IntToStr(imonth);
+end;
+
 Function AtDAT:string;
 begin
-  result:='[' + DateToStr(Date()) + ' ' + TimeToStr(Time()) + ']';
+  result:='[' + DateToStr(Date()) + ' ';
+  t:=Time();
+  DecodeTime(t,hh,mm,ss,ms);
+  stmp:=TimeToStr(t)+'.'+IntToStr(ms)+']';
+  result:=result+stmp;
 end;
 
 Function GetTimeSlice(s:string):integer;
-var
-  t:TDateTime;
-  hh,mm,ss,ms:word;
-  tmp:integer;
 begin
   Delete(s,1,11);
   t:=StrToTime(s);

@@ -1,4 +1,4 @@
-﻿unit DatabaseIO;
+unit DatabaseIO;
 
 {$mode objfpc}{$H+}
 
@@ -23,6 +23,7 @@ Procedure WriteDataToSQLite(City:string);  //City参数为目的地城市的三�
 var
   i,j:integer;
   s:array[1..10] of string;
+  ssaved:integer;
 begin
   SQLite3:=TSQLite3Dataset.Create(AOwner); //创建一个新的对象
   with SQLite3 do
@@ -35,7 +36,9 @@ begin
       FieldDefs.Add('Id', ftAutoInc);      //貌似不写这句是不行的
       FieldDefs.Add('Source',ftString);
       FieldDefs.Add('Target',ftString);
+      FieldDefs.Add('DirectFly',ftString);
       FieldDefs.Add('Cost',ftInteger);
+      FieldDefs.Add('MoneySaved',ftInteger);
       FieldDefs.Add('PlaneNum',ftInteger);
       FieldDefs.Add('Plane1',ftString);
       FieldDefs.Add('Plane2',ftString);
@@ -56,10 +59,15 @@ begin
   begin
     SQLite3.Append;                  //追加一行数据
     for j:=1 to MaxJump do s[j]:=Solve[i].PName[j];
-    SQLite3.FieldByName('Source').AsString   := GetTWCodeByID(i);
-    SQLite3.FieldByName('Target').AsString   := City;
+    SQLite3.FieldByName('Source').AsString    := GetTWCodeByID(i);
+    SQLite3.FieldByName('Target').AsString    := City;
+    SQLite3.FieldByName('DirectFly').AsString := Direct[i];
     SQLite3.FieldByName('Cost').AsInteger     := Solve[i].TotalCost ;
     SQLite3.FieldByName('PlaneNum').AsInteger := Solve[i].JumpNum;
+    if DCost[i]-Solve[i].TotalCost>10000
+      then ssaved:=0
+      else ssaved:=DCost[i]-Solve[i].TotalCost;
+    SQLite3.FieldByName('MoneySaved').AsInteger := ssaved;
     for j:=1 to MaxJump do s[j]:=Solve[i].PName[j];
     SQLite3.FieldByName('Plane1').AsString:= s[1];
     SQLite3.FieldByName('Plane2').AsString:= s[2];
@@ -75,7 +83,7 @@ begin
   end;
 
   SQLite3.ApplyUpdates;              //数据库改变，更新数据
-
+  SQLite3.Free;
 end;
 
 {
@@ -143,11 +151,8 @@ begin
   //初始化填充数据，设为最大值表示断路
   fillchar(Time,SizeOf(Time),1);
   fillchar(Cost,SizeOf(Cost),1);
+  fillchar(DCost,SizeOf(DCost),1);
   fillchar(f,SizeOf(f),1);
-  //一开始的时候，初始化当前出发路由和目的路由为空
-  for i:=1 to TotalTime do
-    for j:=1 to RouterNumber do
-    Cost[j,j,i]:=0;                //自己到自己，无花费
 end;
 
 {
@@ -164,7 +169,7 @@ end;
 }
 Procedure LoadDBFromText(const fname:string;const TimeOffset:integer);
 var
-  i:integer;
+  i,j:integer;
   inf:text;
   s:UTF8string;
   InfoData:PlaneInfo;
@@ -203,6 +208,10 @@ begin
     end;
     readln(inf,s);
   until (s='END') or (s='');
+
+  for i:=1 to TotalTime do
+    for j:=1 to RouterNumber do
+    Cost[j,j,i]:=0;                //自己到自己，无花费
 
   Close(inf);
 

@@ -1,4 +1,4 @@
-﻿unit SysData;
+unit SysData;
 
 {$mode objfpc}{$H+}
 
@@ -10,7 +10,8 @@ uses
 {$Define Release}
 
 const
-  MaxDay = 3;
+
+  MaxDay = 2;
   MaxJump = 10;
   FillCharMax = 16843009;
 
@@ -26,10 +27,8 @@ const
 
   _Day1 = 1;
   _Day2 = 2;
-  _Day3 = 3;
 
-  SysLogFile = 'SysLog.log';
-  ver        = 'TEST TYPE' ;   //任何版本长度请使用9字节定长
+  ver        = 'LianYao.Q' ;   //任何版本长度请使用9字节定长
 
 Type
   PlaneInfo = record
@@ -62,12 +61,15 @@ var   //算是公用的变量吧，就写到这个单元里了，但是貌似要
   PathName  : array[1..RouterNumber,1..RouterNumber,1..MaxTimeSection] of string;  //信道名称
   f         : array[1..RouterNumber,1..MaxTimeSection] of longint;                 //计算数组
   Path      : array[1..RouterNumber,1..MaxTimeSection] of integer;                 //跳转引导数组
-  Solve     : array[1..RouterNumber] of Paths;                                     //搜索出来的路径
+  Solve     : array[1..RouterNumber] of Paths;                                   //搜索出来的路径
+  Direct    : array[1..RouterNumber] of string;
+  DCost     : array[1..RouterNumber] of integer;
   TotalTime : integer;
 
-  Day1DB,Day2DB,Day3DB             : string;
-  Day1DBText,Day2DBText,Day3DBText : string;
-  OutputDB                         : string;
+  Day1DB,Day2DB         : string;
+  Day1DBText,Day2DBText : string;
+  OutputDB              : string;
+  SysLogFile            : string;
 
   SQLite3 : TSQLite3Dataset;
   AOwner  : TComponent;
@@ -84,6 +86,7 @@ var
 
 Procedure OpenLog;
 begin
+  SysLogFile:=GetMonthString+'.log';
   if FileExists(SysLogFile)=false then
   begin
     AssignFile(logf,SysLogFile);
