@@ -1,7 +1,16 @@
         <div class="page-header">
             <div class="page-header-content">
 		{% for plane in Planes %}
+		{% if plane.MoneySaved != 0 %}
                 <h1>航班<small>共{{ plane.PlaneNum }}次跳转</small></h1>
+                {% elif plane.Directfly %}
+                <h1>航班<small>只找到直飞路线</small></h1>
+                {% elif plane.Plane2 %}
+                <h1>航班<small>未找到直飞航班。计算出了最优转机路线。</small></h1>
+                {% else %}
+                <h1>抱歉<small>未找到直飞航班。未发现转机路线。</small></h1>
+                {% endif %}
+
                 <a href="#" class="back-button big page-back" style="
     background-image: url(/static/icons/back.png);
 " onclick="backreset();"></a>
@@ -11,133 +20,176 @@
             <div class="page-region-content">
                 <div class="span10">
                 {% if plane.Cost != 16843009 %}
-                    <h2>从 {{ source }} 到 {{ target }}</h2>
-                    <h2>总共花费{{ plane.Cost }}软妹币</h2>
-                     <ul class="listview image fluid">
-			  {% if plane.Plane1 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">1{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane1 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane2 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">2{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane2 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane3 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">3{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane3 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane4 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">4{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane4 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane5 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">5{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane5 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane6 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">6{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane6 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane7 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">7{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane7 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane8 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">8{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane8 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% if plane.Plane9 %}
-                        <li class="bg-color-green fg-color-white">
-                            <div class="icon">
-                                <img src="static/images/plane.png">
-                            </div>
-                            <div class="data">
-                                <h4 class="fg-color-white">9{{ infoh4 }}</h4>
-                                <p>
-                                    {{ plane.Plane9 }}软妹币
-                                </p>
-                            </div>
-                        </li>
-			  {% endif %}
-			  {% else %}
-			 <div class="error-bar fg-color-white">
+                    <h2>从 {{ source }} 到 {{ target }}。</h2>
+                    <h2>总共花费{{ plane.Cost }}软妹币{% if plane.MoneySaved != 0 %},其中帮您节省了{{ plane.MoneySaved }}软妹币。{% else %}。{% endif %}</h2>
+                {% if plane.Directfly %}
+                <div class="tiles clearfix">
+                <div class="tile double bg-color-green selected">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">直飞航班</h3>
+                            <p>
+                                {{ plane.Directfly }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="brand">
+                            <span class="name">贵一点哟～</span>
+                        </div>
+                    </div>
+               </div>
+               {% endif %}
+               {% if plane.Plane2 %}
+		    <h2>最优路线</h2>
+		    <div class="tiles clearfix">
+		    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane1 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">1</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane2 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane2 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">2</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane3 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane3 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">3</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane4 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane4 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">4</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane5 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane5 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">5</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane6 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane6 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">6</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane7 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane7 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">7</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane8 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane8 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">8</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane9 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane9 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">9</div>
+                        </div>
+                    </div>{% endif %}
+                    {% if plane.Plane10 %}
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            
+                            <h3 style="margin-bottom: 5px;">航班</h3>
+                            <p>
+                                {{ plane.Plane10 }}软妹币
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="tile-status">
+                                        <div class="badge bg-color-blue">9</div>
+                        </div>
+                    </div>{% endif %}
+                </div>
+               {% else %}
+               <div class="span10" style="height: 300px; position: relative;">
+                <div class="error-bar fg-color-white">
                                     <p>没有找到适合的航班。</p>
-                         </div>
-                         {% endif %}
+                </div>
+                </div>
+                {% endif %}
 			  {% endfor %}
-                    </ul>
                 </div>
             </div>
         </div>

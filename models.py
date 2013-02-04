@@ -3,7 +3,9 @@ from django.db import models
 class Data(models.Model):
     Source = models.CharField(max_length=3)
     Target = models.CharField(max_length=3)
+    Directfly = models.CharField(max_length=255)
     Cost = models.IntegerField()
+    MoneySaved = models.IntegerField()
     PlaneNum = models.IntegerField()
     Plane1 = models.CharField(max_length=255)
     Plane2 = models.CharField(max_length=255)
