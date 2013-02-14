@@ -29,7 +29,7 @@ const
   _Day2 = 2;
 
   ver        = 'LianYao.Q' ;   //任何版本长度请使用9字节定长
-
+                               //上一版本为TEST TYPE
 Type
   PlaneInfo = record
     SourceCode : string;    //出发地三字码
@@ -61,9 +61,9 @@ var   //算是公用的变量吧，就写到这个单元里了，但是貌似要
   PathName  : array[1..RouterNumber,1..RouterNumber,1..MaxTimeSection] of string;  //信道名称
   f         : array[1..RouterNumber,1..MaxTimeSection] of longint;                 //计算数组
   Path      : array[1..RouterNumber,1..MaxTimeSection] of integer;                 //跳转引导数组
-  Solve     : array[1..RouterNumber] of Paths;                                   //搜索出来的路径
-  Direct    : array[1..RouterNumber] of string;
-  DCost     : array[1..RouterNumber] of integer;
+  Solve     : array[1..RouterNumber] of Paths;                                     //搜索出来的路径
+  Direct    : array[1..RouterNumber] of string;                                    //直接跳转信道
+  DCost     : array[1..RouterNumber] of integer;                                   //直接跳转费用
   TotalTime : integer;
 
   Day1DB,Day2DB         : string;
@@ -114,4 +114,3 @@ begin
 end;
 
 end.
-
