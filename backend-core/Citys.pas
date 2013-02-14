@@ -1,4 +1,4 @@
-﻿unit Citys;
+unit Citys;
 
 {$mode objfpc}{$H+}
 
@@ -9,13 +9,6 @@ uses
 
 const
   CityNumber  = 180;
-  {
-    CityData原来应该是('%中文名%','%三字码%')的，但是由于Lazarus
-    在1.0.4的版本上提示有其他编码的字符集字符而无法通过，而且设置
-    {$PageCode utf8}或者{$PageCode AnsiString}都无法解决。所以，
-    我查了一下其他代码的依存关系，发现那群中文城市名居然是没有用
-    的。我懒得改其他接口和代码，就直接把中文的城市名删掉了。
-  }
   CityData:array[1..CityNumber] of string =
   (
   ('ACX'),('CAN'),('HFE'),('PEK'),
