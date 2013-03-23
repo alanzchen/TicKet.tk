@@ -36,6 +36,7 @@ begin
       FieldDefs.Add('Id', ftAutoInc);      //貌似不写这句是不行的
       FieldDefs.Add('Source',ftString);
       FieldDefs.Add('Target',ftString);
+      FieldDefs.Add('Date',ftInteger);
       FieldDefs.Add('DirectFly',ftString);
       FieldDefs.Add('Cost',ftInteger);
       FieldDefs.Add('MoneySaved',ftInteger);
@@ -61,6 +62,7 @@ begin
     for j:=1 to MaxJump do s[j]:=Solve[i].PName[j];
     SQLite3.FieldByName('Source').AsString    := GetTWCodeByID(i);
     SQLite3.FieldByName('Target').AsString    := City;
+    SQLite3.FieldByName('Date').AsInteger     := DataDate;
     SQLite3.FieldByName('DirectFly').AsString := Direct[i];
     SQLite3.FieldByName('Cost').AsInteger     := Solve[i].TotalCost ;
     SQLite3.FieldByName('PlaneNum').AsInteger := Solve[i].JumpNum;
@@ -153,6 +155,13 @@ end;
 参数：fname      读入数据库文件地址
       TimeOffset 载入开始到第几个时间段
                  即如果是第二天第三天的数据，值分别为24*1+1和24*2+1
+
+其实我应该老老实实地写一个读SQL数据库的函数的，但是我又懒得大改……
+于是我就把调试用的函数改了个名字，然后再写一个读SQL的函数，让那个
+函数把结果写到文本里面去再读一次，这样多省事儿啊………………
+而且！读完以后是要排序的！因为我不确定数据库里读出来的是按我的要求，
+即出发时间升序排列的。但是我的程序必须用这样的数据，要不然记录起来
+相当麻烦。
 }
 Procedure LoadDBFromText(const fname:string;const TimeOffset:integer);
 var
@@ -205,3 +214,4 @@ begin
 end;
 
 end.
+
