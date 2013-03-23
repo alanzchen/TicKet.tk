@@ -29,7 +29,7 @@ const
   _Day2 = 2;
 
   ver        = 'LianYao.Q' ;   //任何版本长度请使用9字节定长
-                               //上一版本为TEST TYPE
+
 Type
   PlaneInfo = record
     SourceCode : string;    //出发地三字码
@@ -62,10 +62,11 @@ var   //算是公用的变量吧，就写到这个单元里了，但是貌似要
   f         : array[1..RouterNumber,1..MaxTimeSection] of longint;                 //计算数组
   Path      : array[1..RouterNumber,1..MaxTimeSection] of integer;                 //跳转引导数组
   Solve     : array[1..RouterNumber] of Paths;                                     //搜索出来的路径
-  Direct    : array[1..RouterNumber] of string;                                    //直接跳转信道
-  DCost     : array[1..RouterNumber] of integer;                                   //直接跳转费用
-  TotalTime : integer;
+  Direct    : array[1..RouterNumber] of string;
+  DCost     : array[1..RouterNumber] of integer;
 
+  TotalTime             : integer;
+  DataDate              : integer;
   Day1DB,Day2DB         : string;
   Day1DBText,Day2DBText : string;
   OutputDB              : string;
@@ -73,7 +74,7 @@ var   //算是公用的变量吧，就写到这个单元里了，但是貌似要
 
   SQLite3 : TSQLite3Dataset;
   AOwner  : TComponent;
-  DataSrc : TDatasource;public;
+  DataSrc : TDatasource;public;         //貌似要加public才可以，我木有系统学过啊
 
 Procedure OpenLog;
 Procedure AddLog(msg:string);
@@ -114,3 +115,7 @@ begin
 end;
 
 end.
+
+//马勒戈壁的广一模，改卷子就没见过改得那么随意的，劳资的理综严格地改都有285，妥妥的全市前20啊，尼玛给你们糟蹋成279了！
+//俺的化学啊！用六校联考的严格标准改都妥妥的满分啊！现在木有啊！改俺理综的老师，俺祝你一辈子在12306抢不到票！
+//广一模，我去年买了个表！
