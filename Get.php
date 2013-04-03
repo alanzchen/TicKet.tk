@@ -27,7 +27,7 @@ else{
 			foreach ($match[0][0] as & $valuestr) {
 				preg_match('/value="(.*?)"/',$valuestr,$matched);
 				echo $matched[1]."<br>";
-				$strt = substr($matched[1],0,19);
+				$strtf = substr($matched[1],0,19);
 				$strte = substr($matched[1],20,19);
 				echo $valuestr[1]."<br>";
 				$vstr = $match[1][0][$tt];
@@ -35,7 +35,7 @@ else{
 				$strl = strlen($strt)-7;
 				$strt = substr($strt,0,$strl);
 				echo $strt;
-				fwrite($fp,$matched[1]."|"."于".$strt."从".$jc[$a]."起飞,飞往".$jc[$b].",将于".$strte."到达"."|".$strt."\r\n");
+				fwrite($fp,$matched[1]."|"."于".$strtf."从".$jc[$a]."起飞,飞往".$jc[$b].",将于".$strte."到达"."|".$strt."\r\n");
 				$tt = $tt+1;
 				
 			}
